@@ -1,14 +1,15 @@
 plugins {
     kotlin("multiplatform")
-    application
     kotlin("plugin.serialization")
     id("com.github.johnrengelman.shadow")
 }
 
 
 kotlin {
-    jvm() {
-        withJava()
+    jvm {
+        mainRun {
+            mainClass.set("ServerKt")
+        }
     }
 
     sourceSets {
@@ -27,8 +28,4 @@ kotlin {
             implementation(projects.common)
         }
     }
-}
-
-application {
-    mainClass.set("ServerKt")
 }
